@@ -46,3 +46,10 @@ hi hello how are you
 hi hello how are you
 >
 >ksdajflasjf;dsjf;dskfjd;sfksad;fsd
+create a new artifacts
+>Dev
+>QA
+Prod
+>UAT
+
+
