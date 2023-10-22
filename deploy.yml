@@ -29,7 +29,8 @@
        dest: /usr/share/tomcat/webapps/hello-world-servlet-example.war
   - name: Start Tomcat
     service: name=tomcat state=started              
-    - name: Nexus IQ for GitHub Actions
-                uses: sonatype-nexus-community/iq-github-action@1.1.1
+     - name: Nexus IQ for GitHub Actions
+      uses: sonatype-nexus-community/iq-github-action@1.0.0
+            
             
     
