@@ -30,8 +30,7 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.17</version>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
+             <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.6</version>
         <configuration>
@@ -39,9 +38,8 @@
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>1.6</targetJdk>
-	</plugin>
-	    </plugins>
-        <!--
+	
+	         <!--
           <rulesets>
             <ruleset>/rulesets/braces.xml</ruleset>
           </rulesets>
@@ -54,7 +52,7 @@
           </excludeRoots>
         -->
         </configuration>
-      </plugin>
+      
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
