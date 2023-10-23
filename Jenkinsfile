@@ -53,14 +53,33 @@ stages {
  //           waitForQualityGate abortPipeline: true
   //      }
     }
-         
+     
+          freeStyleJob('NexusArtifactUploaderJob') {
+        steps {
+          nexusArtifactUploader {
+            nexusVersion('nexus3')
+            protocol('http')
+            nexusUrl('13.58.37.70:8081')
+            groupId('com.geekcap.vmturbo')
+            version('1.0')
+            repository('NexusArtifactUploader')
+            credentialsId('44620c50-1589-4617-a677-7563985e46e1')
+            artifact {
+                artifactId('hello-world-servlet-example')
+                type('war')
+                classifier('debug')
+                file('helloworld.war')
+            }
+                      }
+        }
+    }
 nexusArtifactUploader(
         nexusVersion: 'nexus3',
         protocol: 'http',
-        nexusUrl: 'my.nexus.address',
-        groupId: 'com.example',
-        version: version,
-        repository: 'RepositoryName',
+        nexusUrl: '13.58.37.70:8081',
+        groupId: 'com.geekcap.vmturbo',
+        version: 1.0,
+        repository: 'hello-world-servlet',
         credentialsId: 'CredentialsId',
         artifacts: [
             [artifactId: hello-world-servlet-example,
