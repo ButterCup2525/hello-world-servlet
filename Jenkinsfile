@@ -53,12 +53,51 @@ stages {
  //           waitForQualityGate abortPipeline: true
   //      }
     }
-}
+}freeStyleJob('NexusArtifactUploaderJob') {
+        steps {
+          nexusArtifactUploader {
+            nexusVersion('nexus2')
+            protocol('http')
+            nexusUrl('localhost:8080/nexus')
+            groupId('sp.sd')
+            version('2.4')
+            repository('NexusArtifactUploader')
+            credentialsId('44620c50-1589-4617-a677-7563985e46e1')
+            artifact {
+                artifactId('nexus-artifact-uploader')
+                type('jar')
+                classifier('debug')
+                file('nexus-artifact-uploader.jar')
+            }
+            artifact {
+                artifactId('nexus-artifact-uploader')
+                type('hpi')
+                classifier('debug')
+                file('nexus-artifact-uploader.hpi')
+            }
+          }
+        }
+    }
+     nexusArtifactUploader(
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: 'my.nexus.address',
+        groupId: 'com.example',
+        version: version,
+        repository: 'RepositoryName',
+        credentialsId: 'CredentialsId',
+        artifacts: [
+            [artifactId: projectName,
+             classifier: '',
+             file: 'my-service-' + version + '.jar',
+             type: 'jar']
+        ]
+     )
      stage('Artifact upload') {
       steps {
      //nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/helloworld.war']], mavenCoordinate: [artifactId: 'hello-world-servlet-example', groupId: 'com.geekcap.vmturbo', packaging: 'war', version: '$BUILD_NUMBER']]]
      //nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'target/helloworld.war']], mavenCoordinate: [artifactId: 'hello-world-servlet-example', groupId: 'com.geekcap.vmturbo', packaging: 'war', version: '$BUILD_NUMBER']]]
-       nexusArtifactUploader artifacts: [[artifactId: 'hello-world-servlet-example', classifier: '', file: 'target/helloworld.war', type: 'war']], credentialsId: 'nexus-cred', groupId: 'com.geekcap.vmturbo', nexusUrl: '3.133.135.115:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hello-world-servlet', version: '${BUILD_NUMBER}'   
+       nexusArtifactUploader artifacts: [[artifactId: 'hello-world-servlet-example', classifier: '', file: 'target/helloworld.war', type: 'war']], credentialsId: 'nexus-cred', groupId: 'com.geekcap.vmturbo', nexusUrl: '13.58.37.70:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'hello-world-servlet', version: '${BUILD_NUMBER}'   
       }
  }
     
