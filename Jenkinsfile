@@ -53,7 +53,22 @@ stages {
  //           waitForQualityGate abortPipeline: true
   //      }
     }
-
+         
+nexusArtifactUploader(
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: 'my.nexus.address',
+        groupId: 'com.example',
+        version: version,
+        repository: 'RepositoryName',
+        credentialsId: 'CredentialsId',
+        artifacts: [
+            [artifactId: hello-world-servlet-example,
+             classifier: '',
+             file: 'target/helloworld.war',
+             type: 'war']
+        ]
+     )
    
      stage('Artifact upload') {
       steps {
