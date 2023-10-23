@@ -40,6 +40,7 @@
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
           <targetJdk>1.6</targetJdk>
+	</plugin>
         <!--
           <rulesets>
             <ruleset>/rulesets/braces.xml</ruleset>
